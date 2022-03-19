@@ -5,15 +5,19 @@
         <a class="nav-link active" aria-current="page" href="#">All</a>
       </li>
       <li class="nav-item" @click="getConcert">
-        <a class="nav-link" href="#">Concert</a>
+        <a class="nav-link active" href="#">Concert</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item" @click="getSports">
+        <a class="nav-link" href="#">Sports</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-          >Disabled</a
-        >
+      <li class="nav-item" @click="getConventions">
+        <a class="nav-link" href="#">Convention</a>
+      </li>
+      <li class="nav-item" @click="getDigital">
+        <a class="nav-link" href="#">Digital</a>
+      </li>
+      <li class="nav-item" @click="getExpos">
+        <a class="nav-link" href="#">Expos</a>
       </li>
     </ul>
     <div class="row justify-content-around m-2 mb-4">
@@ -51,6 +55,35 @@ export default {
       async getConcert() {
         try {
           await towerEventsService.getConcert()
+        } catch (error) {
+          logger.error(error)
+        }
+      },
+      async getSports() {
+        try {
+          await towerEventsService.getSports()
+        } catch (error) {
+          logger.error(error)
+
+        }
+      },
+      async getConventions() {
+        try {
+          await towerEventsService.getConventions()
+        } catch (error) {
+          logger.error(error)
+        }
+      },
+      async getDigital() {
+        try {
+          await towerEventsService.getDigital()
+        } catch (error) {
+          logger.error(error)
+        }
+      },
+      async getExpos() {
+        try {
+          await towerEventsService.getExpos()
         } catch (error) {
           logger.error(error)
         }
