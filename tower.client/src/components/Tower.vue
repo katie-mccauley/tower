@@ -1,9 +1,14 @@
 <template>
   <div class="component">
+    <h3>{{ tower.name }}</h3>
     <h3>
-      {{ tower.name }} || {{ tower.startDate }} || {{ tower.capacity }} ||
-      {{ tower.location }}
+      {{
+        new Date(tower.startDate || tower.event.startDate).toLocaleDateString()
+      }}
     </h3>
+
+    <h3>{{ tower.capacity }}</h3>
+    <h3>{{ tower.location }}</h3>
   </div>
 </template>
 

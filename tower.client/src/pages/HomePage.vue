@@ -1,7 +1,27 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-3 m-2 bg-white" v-for="t in towerEvents" :key="t.id">
+    <ul class="nav">
+      <li class="nav-item" @click="getAll">
+        <a class="nav-link active" aria-current="page" href="#">All</a>
+      </li>
+      <li class="nav-item" @click="getConcert">
+        <a class="nav-link" href="#">Concert</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+          >Disabled</a
+        >
+      </li>
+    </ul>
+    <div class="row justify-content-around m-2 mb-4">
+      <div
+        class="col-3 m-2 bg-white rounded shadow"
+        v-for="t in towerEvents"
+        :key="t.id"
+      >
         <Tower :tower="t" />
       </div>
     </div>
@@ -16,15 +36,25 @@ import { AppState } from "../AppState"
 export default {
   name: 'Home',
   setup() {
-    onMounted(async () => {
-      try {
-        await towerEventsService.getAllEvents()
-      } catch (error) {
-        logger.error(error)
-      }
-    })
+    // onMounted(async () => {
+
+    // })
     return {
-      towerEvents: computed(() => AppState.towerEvents)
+      towerEvents: computed(() => AppState.towerEvents),
+      async getAll() {
+        try {
+          await towerEventsService.getAllEvents()
+        } catch (error) {
+          logger.error(error)
+        }
+      },
+      async getConcert() {
+        try {
+          await towerEventsService.getConcert()
+        } catch (error) {
+          logger.error(error)
+        }
+      }
     }
   }
 }

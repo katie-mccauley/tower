@@ -15,6 +15,11 @@ class TowerEventsService {
     logger.log(res.data)
     AppState.towerEvents.unshift(res.data)
   }
+
+  async getConcert() {
+    let concert = AppState.towerEvents.filter(t => t.type === 'sport' || 'Sport')
+    AppState.towerEvents = concert
+  }
 }
 
 export const towerEventsService = new TowerEventsService()
