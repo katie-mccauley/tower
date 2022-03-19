@@ -12,11 +12,11 @@
         <div class="col-6 mt-5 me-2">
           <h2 class="m-2">
             {{ activeEvent.name }}
-            {{
+            <!-- {{
               new Date(
                 activeEvent.startDate || activeEvent.event.startDate
               ).toLocaleDateString()
-            }}
+            }} -->
           </h2>
           <h3 class="m-2">{{ activeEvent.location }}</h3>
           <h6 class="m-2 mt-4">{{ activeEvent.description }}</h6>
@@ -49,6 +49,12 @@
       </div>
     </div>
   </div>
+
+  <div class="row justify-content-center">
+    <div class="col-6 bg-blue rounded shadow" v-for="t in people" :key="t.id">
+      <Tickets :ticket="t" />
+    </div>
+  </div>
 </template>
 
 
@@ -58,6 +64,7 @@ import { useRoute, useRouter } from "vue-router"
 import { logger } from "../utils/Logger"
 import { towerEventsService } from "../services/TowerEventsService"
 import { AppState } from "../AppState"
+import { ticketsService } from "../services/TicketsService"
 export default {
   setup() {
     const route = useRoute()
@@ -66,12 +73,14 @@ export default {
       try {
         if (route.name == "EventDetails") {
           await towerEventsService.getEventById(route.params.id)
+          await ticketsService.getPeopleTickets(route.params.id)
         }
       } catch (error) {
         logger.error(error)
       }
     })
     return {
+      people: computed(() => AppState.peopleTickets),
       activeEvent: computed(() => AppState.activeEvent)
     }
   }
