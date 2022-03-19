@@ -32,10 +32,10 @@ class TowerEventsService {
 
       original.name = update.name ? update.name : original.name
       original.description = update.description ? update.description : original.description
-      original.coverImg = update.coverImg ? update.coverImg : original.coverImg
-      original.location = update.location ? update.location : original.location
-      original.startDate = update.startDate ? update.startDate : original.startDate
-      original.type = update.type ? update.type : original.type
+      // original.coverImg = update.coverImg ? update.coverImg : original.coverImg
+      // original.location = update.location ? update.location : original.location
+      // original.startDate = update.startDate ? update.startDate : original.startDate
+      // original.type = update.type ? update.type : original.type
     } else {
       throw new BadRequest("can't edit something if been deleted")
     }

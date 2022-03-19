@@ -25,9 +25,13 @@ class TicketsService {
 
 
   async createTicket(body) {
-    const ticket = await dbContext.Tickets.create(body)
+
     const event = await dbContext.TowerEvents.findById(body.eventId)
     event.capacity -= 1
+    if (event.capacity <= 0) {
+      throw new BadRequest('there is no capcity')
+    }
+    const ticket = await dbContext.Tickets.create(body)
     await event.save()
     // await event.populate('account', 'towerEvent')
 
