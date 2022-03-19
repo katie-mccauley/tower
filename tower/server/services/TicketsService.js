@@ -3,6 +3,7 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 class TicketsService {
+
   async removeTicket(ticketId, userId) {
     const t = await dbContext.TowerEvents.findById(ticketId)
     if (t.creatorId.toString() !== userId) {
@@ -21,6 +22,7 @@ class TicketsService {
       }
     })
   }
+
 
   async createTicket(body) {
     const ticket = await dbContext.Tickets.create(body)

@@ -1,4 +1,5 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { commentsService } from "../services/CommentsService";
 import { ticketsService } from "../services/TicketsService";
 import { towerEventsService } from "../services/TowerEventsService";
 import BaseController from "../utils/BaseController";
@@ -10,22 +11,14 @@ export class TowerEventsController extends BaseController {
     this.router
       .get('', this.getAll)
       .get('/:id', this.getOne)
-      .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:id/comments', this.getEventComments)
       .get('/:id/tickets', this.getEventTickets)
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createEvent)
       .put('/:id', this.editEvent)
       .delete('/:id', this.removeEvent)
   }
 
-  async createEvent(req, res, next) {
-    try {
-      req.body.creatorId = req.userInfo.id
-      const towerEvent = await towerEventsService.createEvent(req.body)
-      return res.send(towerEvent)
-    } catch (error) {
-      next(error)
-    }
-  }
 
   async getAll(req, res, next) {
     try {
@@ -45,6 +38,31 @@ export class TowerEventsController extends BaseController {
     }
   }
 
+  async getEventComments(req, res, next) {
+    try {
+      const comments = await commentsService.getEventComments({ eventId: req.params.id })
+      return res.send(comments)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async getEventTickets(req, res, next) {
+    try {
+      const tickets = await ticketsService.getEventTickets({ eventId: req.params.id })
+      return res.send(tickets)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async createEvent(req, res, next) {
+    try {
+      req.body.creatorId = req.userInfo.id
+      const towerEvent = await towerEventsService.createEvent(req.body)
+      return res.send(towerEvent)
+    } catch (error) {
+      next(error)
+    }
+  }
   async editEvent(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
@@ -67,12 +85,5 @@ export class TowerEventsController extends BaseController {
     }
   }
 
-  async getEventTickets(req, res, next) {
-    try {
-      const tickets = await ticketsService.getEventTickets({ eventId: req.params.id })
-      return res.send(tickets)
-    } catch (error) {
-      next(error)
-    }
-  }
+
 }
