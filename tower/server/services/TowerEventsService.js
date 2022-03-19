@@ -50,7 +50,7 @@ class TowerEventsService {
     if (remove.creatorId.toString() !== userId) {
       throw new BadRequest("this is not your event")
     }
-    remove.isCanceled = !remove.isCanceled
+    remove.isCanceled = false
     await remove.save()
     await remove.populate('creator')
     return remove
