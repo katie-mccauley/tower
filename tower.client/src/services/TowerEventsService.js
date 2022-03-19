@@ -28,6 +28,12 @@ class TowerEventsService {
     AppState.towerEvents = AppState.towerEvents.filter(e => e.id !== id)
   }
 
+  async getPeopleTickets(id) {
+    const res = await api.get('api/events/' + id + '/tickets')
+    logger.log("this is tickets", res.data)
+    AppState.peopleTickets = res.data
+  }
+
   async getConcert() {
     await this.getAllEvents()
     let concert = AppState.towerEvents.filter(t => t.type === 'concert')

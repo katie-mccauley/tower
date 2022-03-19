@@ -4,9 +4,10 @@ import { AppState } from "../AppState"
 
 class TicketsService {
 
-  async getPeopleTickets(id) {
-    const res = await api.get('api/events/' + id + '/tickets')
-    logger.log("this is tickets", res.data)
+
+  async createTicket(newTicket) {
+    const res = await api.post('api/tickets', newTicket)
+    logger.log(res.data)
     AppState.peopleTickets = res.data
   }
 }
