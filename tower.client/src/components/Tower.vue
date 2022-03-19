@@ -9,6 +9,12 @@
 
     <h3>{{ tower.capacity }}</h3>
     <h3>{{ tower.location }}</h3>
+    <div v-if="tower.isCanceled" class="bg-warning">
+      <h4>This is canceled</h4>
+    </div>
+    <div v-if="tower.capacity <= 0" class="bg-danger">
+      <h4>No more seats</h4>
+    </div>
   </div>
 </template>
 
