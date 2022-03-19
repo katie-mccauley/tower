@@ -22,6 +22,12 @@ class TowerEventsService {
     AppState.towerEvents.unshift(res.data)
   }
 
+  async cancelEvent(id) {
+    const res = await api.delete('api/events/' + id)
+    logger.log(res.data)
+    AppState.towerEvents = AppState.towerEvents.filter(e => e.id !== id)
+  }
+
   async getConcert() {
     await this.getAllEvents()
     let concert = AppState.towerEvents.filter(t => t.type === 'concert')

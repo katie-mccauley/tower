@@ -2,14 +2,30 @@
   <div class="row m-3 ms-5 justify-content-center lightcolor text-shadow">
     <div class="col-6 m-0 p-0 bg-blue rounded shadow">
       <div class="row">
-        <div class="col-4">
+        <div class="col-5">
           <img
             class="img-fluid rounded shadow crop"
             :src="activeEvent.coverImg"
             alt=""
           />
         </div>
-        <div class="col-6 mt-5 me-2">
+        <div class="col-7">
+          <div class="row justify-content-end">
+            <div
+              v-if="
+                account.id == activeEvent.creatorId && !activeEvent.isCanceled
+              "
+              class="col-1"
+            >
+              <button
+                @click="cancelEvent"
+                type="button"
+                class="btn-close btn-close-white"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+
           <h2 class="m-2">
             {{ activeEvent.name }}
             <!-- {{
@@ -19,7 +35,7 @@
             }} -->
           </h2>
           <h3 class="m-2">{{ activeEvent.location }}</h3>
-          <h6 class="m-2 mt-4">{{ activeEvent.description }}</h6>
+          <h6 class="me-5 m-2 mt-4">{{ activeEvent.description }}</h6>
           <div class="row m-3 justify-content-between">
             <div
               v-if="activeEvent.capacity > 0 && activeEvent.isCanceled == false"
@@ -65,6 +81,7 @@ import { logger } from "../utils/Logger"
 import { towerEventsService } from "../services/TowerEventsService"
 import { AppState } from "../AppState"
 import { ticketsService } from "../services/TicketsService"
+import Pop from "../utils/Pop"
 export default {
   setup() {
     const route = useRoute()
@@ -81,7 +98,18 @@ export default {
     })
     return {
       people: computed(() => AppState.peopleTickets),
-      activeEvent: computed(() => AppState.activeEvent)
+      activeEvent: computed(() => AppState.activeEvent),
+      account: computed(() => AppState.account),
+      async cancelEvent() {
+        try {
+          if (await Pop.confirm()) {
+            await towerEventsService.cancelEvent(route.params.id)
+            router.push({ name: 'Home' })
+          }
+        } catch (error) {
+          logger.error(error)
+        }
+      }
     }
   }
 }
