@@ -60,7 +60,11 @@
               </div>
               <div class="col-4">
                 <button
-                  v-if="activeEvent.capacity > 0 && !activeEvent.isCanceled"
+                  v-if="
+                    activeEvent.capacity > 0 &&
+                    !activeEvent.isCanceled &&
+                    !hasTicket
+                  "
                   @click="addTicket"
                   class="btn yellow shadow"
                 >
@@ -112,6 +116,7 @@ export default {
       people: computed(() => AppState.peopleTickets),
       activeEvent: computed(() => AppState.activeEvent),
       account: computed(() => AppState.account),
+      hasTicket: computed(() => AppState.peopleTickets.find((t) => t.id == AppState.account.id)),
       async cancelEvent() {
         try {
           if (await Pop.confirm()) {
