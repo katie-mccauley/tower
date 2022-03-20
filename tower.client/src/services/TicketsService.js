@@ -1,6 +1,7 @@
 import { api } from "./AxiosService"
 import { logger } from "../utils/Logger"
 import { AppState } from "../AppState"
+import { towerEventsService } from "./TowerEventsService"
 
 class TicketsService {
 
@@ -28,9 +29,15 @@ class TicketsService {
     AppState.attending = res.data
   }
 
-  async deleteTicket(eventId, ticketId) {
+  async deleteTicket(id, ticketId) {
     const res = await api.delete('api/tickets/' + ticketId)
     logger.log("deleting ticket", res.data)
+    AppState.attending = AppState.attending.filter(a => a.id !== ticketId)
+    AppState.activeEvent = id
+    towerEventsService.getEventById(id)
+    await this.getEventTickets(id)
+
+
   }
 }
 
