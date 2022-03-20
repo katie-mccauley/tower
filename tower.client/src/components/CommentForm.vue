@@ -1,0 +1,53 @@
+<template>
+  <form action="" @submit.prevent="createComment">
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label lightcolor"
+        >Make a comment</label
+      >
+      <textarea
+        v-model="editable.body"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+      <button class="btn btn-primary">create</button>
+    </div>
+  </form>
+</template>
+
+
+<script>
+import { ref } from "@vue/reactivity"
+import { useRoute } from "vue-router"
+import { commentsService } from "../services/CommentsService"
+export default {
+  // props:{
+  //   commentData:{
+  //     type: Object, 
+  //     required: false
+  //   }
+  // },
+
+  setup() {
+    const route = useRoute()
+    const editable = ref({})
+    return {
+      editable,
+      async createComment() {
+        editable.value.eventId = route.params.id
+        await commentsService.createComment(editable.value)
+        editable.value = {}
+      }
+    }
+  }
+}
+</script>
+
+
+<style lang="scss" scoped>
+.lightcolor {
+  color: rgba(204, 243, 253, 1);
+}
+</style>

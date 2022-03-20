@@ -90,11 +90,26 @@
       </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row m-3 ms-5 justify-content-center">
       <div class="col-6 justify-content-center bg-blue rounded shadow">
         <div class="row">
           <div class="col-3" v-for="t in people" :key="t.id">
             <Tickets :ticket="t" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-3 ms-5 justify-content-center">
+      <div class="col-6 justify-content-center bg-blue rounded shadow">
+        <div class="row">
+          <div class="col-10">
+            <CommentForm />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12" v-for="c in comments" :key="c.id">
+            <Comment :comment="c" />
           </div>
         </div>
       </div>
@@ -124,6 +139,7 @@ export default {
         if (route.name == "EventDetails") {
           await towerEventsService.getEventById(route.params.id)
           await towerEventsService.getEventTickets(route.params.id)
+          await towerEventsService.getEventComments(route.params.id)
         }
       } catch (error) {
         logger.error(error)
@@ -132,6 +148,7 @@ export default {
     return {
       people: computed(() => AppState.peopleTickets),
       activeEvent: computed(() => AppState.activeEvent),
+      comments: computed(() => AppState.comments),
       account: computed(() => AppState.account),
       hasTicket: computed(() => AppState.peopleTickets.find((t) => t.id == AppState.account.id)),
       async cancelEvent() {
