@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center"><h1>Tower</h1></div>
+      <div class="d-flex flex-column align-items-center lightcolor">
+        <h1>Tower</h1>
+      </div>
     </router-link>
     <button
       class="navbar-toggler"
@@ -28,7 +30,7 @@
         <button
           data-bs-toggle="modal"
           data-bs-target="#create-event"
-          class="btn btn-info"
+          class="btn btn-info green-button text-dark shadow ms-4"
         >
           Create Event
         </button>
@@ -68,5 +70,13 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.green-button {
+  background-color: rgba(121, 231, 171, 1);
+}
+
+.lightcolor {
+  color: rgba(204, 243, 253, 1);
 }
 </style>

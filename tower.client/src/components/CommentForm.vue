@@ -12,7 +12,7 @@
       ></textarea>
     </div>
     <div class="col-12 d-flex justify-content-end">
-      <button class="btn btn-primary">create</button>
+      <button class="btn green-button">create</button>
     </div>
   </form>
 </template>
@@ -49,5 +49,9 @@ export default {
 <style lang="scss" scoped>
 .lightcolor {
   color: rgba(204, 243, 253, 1);
+}
+
+.green-button {
+  background-color: rgba(121, 231, 171, 1);
 }
 </style>

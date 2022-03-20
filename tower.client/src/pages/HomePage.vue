@@ -22,7 +22,15 @@
     </ul>
     <div class="row justify-content-around m-2 mb-4">
       <div
-        class="col-3 m-2 bg-white rounded shadow"
+        class="
+          col-md-3
+          m-2
+          bg-blue
+          text-shadow
+          rounded
+          shadow
+          picture-background
+        "
         v-for="t in towerEvents"
         :key="t.id"
       >
@@ -87,7 +95,9 @@ export default {
         } catch (error) {
           logger.error(error)
         }
-      }
+      },
+      pic: computed(() => `url('${AppState.towerEvents.coverImg}')`)
+
     }
   }
 }
@@ -110,5 +120,16 @@ export default {
       object-position: center;
     }
   }
+}
+
+.bg-blue {
+  background-color: rgba(71, 76, 97, 1);
+  backdrop-filter: blur(30px);
+}
+
+.picture-background {
+  background-image: v-bind(pic);
+  background-position: center;
+  background-size: cover;
 }
 </style>

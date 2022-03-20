@@ -12,11 +12,7 @@ class AccountService {
     }
   }
 
-  async getAccountTickets() {
-    const res = await api.get('account/tickets')
-    logger.log("account info", res.data)
-    AppState.towerEvents = res.data
-  }
+
 }
 
 export const accountService = new AccountService()

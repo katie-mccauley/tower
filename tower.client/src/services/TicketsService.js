@@ -8,6 +8,9 @@ class TicketsService {
     const res = await api.get('api/events/' + id + '/tickets')
     logger.log("this is tickets", res.data)
     AppState.peopleTickets = res.data
+    if (AppState.user.isAuthenticated) {
+      await this.getAccountTickets()
+    }
   }
   async addTicket(newTicket) {
     const res = await api.post('api/tickets', newTicket)
@@ -19,9 +22,14 @@ class TicketsService {
 
   }
 
+  async getAccountTickets() {
+    const res = await api.get('account/tickets')
+    logger.log("my events that I am going to", res.data)
+    AppState.attending = res.data
+  }
 
-  async deleteTicket(ticketId) {
-    const res = await api.get('api/tickets/' + ticketId)
+  async deleteTicket(eventId, ticketId) {
+    const res = await api.delete('api/tickets/' + ticketId)
     logger.log("deleting ticket", res.data)
   }
 }

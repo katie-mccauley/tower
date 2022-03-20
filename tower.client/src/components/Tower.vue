@@ -1,6 +1,6 @@
 <template>
   <router-link :to="{ name: 'EventDetails', params: { id: tower.id } }">
-    <div class="component text-dark">
+    <div class="lightcolor">
       <h3>{{ tower.name }}</h3>
       <h3>
         The start date is
@@ -25,6 +25,7 @@
 
 
 <script>
+import { computed } from "@vue/reactivity"
 export default {
   props: {
     tower: {
@@ -33,11 +34,15 @@ export default {
     }
   },
   setup() {
-    return {}
+    return {
+    }
   }
 }
 </script>
 
 
 <style lang="scss" scoped>
+.lightcolor {
+  color: rgba(204, 243, 253, 1);
+}
 </style>
