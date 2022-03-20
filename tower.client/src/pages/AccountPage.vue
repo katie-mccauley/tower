@@ -7,11 +7,11 @@
     </div>
     <div class="row">
       <div
-        class="col bg-white shadow rounded"
+        class="col-3 m-2 bg-white shadow rounded"
         v-for="e in myEvents"
         :key="e.id"
       >
-        {{ e.name }}>
+        <MyEvents :eventData="e" />
       </div>
     </div>
   </div>
@@ -23,10 +23,13 @@ import { AppState } from '../AppState'
 import { towerEventsService } from "../services/TowerEventsService"
 import { accountService } from "../services/AccountService"
 import { logger } from "../utils/Logger"
+import { useRoute } from "vue-router"
+import { ticketsService } from "../services/TicketsService"
 export default {
 
   name: 'Account',
   setup() {
+    const route = useRoute()
     onMounted(async () => {
       try {
         await accountService.getAccountTickets()
@@ -37,7 +40,8 @@ export default {
     return {
       account: computed(() => AppState.account),
       // myEvents: computed(() => AppState.towerEvents.creatorId == AppState.account.id)
-      myEvents: computed(() => AppState.towerEvents)
+      myEvents: computed(() => AppState.towerEvents),
+
     }
   }
 }

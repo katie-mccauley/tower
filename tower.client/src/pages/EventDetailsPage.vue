@@ -124,7 +124,7 @@
 
 
 <script>
-import { computed, watchEffect } from "@vue/runtime-core"
+import { computed, onMounted, watchEffect } from "@vue/runtime-core"
 import { useRoute, useRouter } from "vue-router"
 import { logger } from "../utils/Logger"
 import { towerEventsService } from "../services/TowerEventsService"
@@ -135,11 +135,18 @@ export default {
   setup() {
     const route = useRoute()
     const router = useRouter()
+    // onMounted(async () => {
+    //   try {
+
+    //   } catch (error) {
+    //     logger.error(error)
+    //   }
+    // })
     watchEffect(async () => {
       try {
         if (route.name == "EventDetails") {
           await towerEventsService.getEventById(route.params.id)
-          await towerEventsService.getEventTickets(route.params.id)
+          await ticketsService.getEventTickets(route.params.id)
           await towerEventsService.getEventComments(route.params.id)
         }
       } catch (error) {
@@ -162,14 +169,16 @@ export default {
           logger.error(error)
         }
       },
-      async addTicket() {
+      addTicket() {
         try {
           let newTicket = {
             accountId: AppState.account.id,
             eventId: AppState.activeEvent.id
           }
-          await ticketsService.addTicket(newTicket)
+          ticketsService.addTicket(newTicket)
+          // ticketsService.getEventTickets(route.params.id)
           // await ticketsService.addTicket({ eventId: route.params.id })
+
         } catch (error) {
           logger.error(error)
         }
