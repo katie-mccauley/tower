@@ -76,7 +76,8 @@
                   v-if="
                     activeEvent.capacity > 0 &&
                     !activeEvent.isCanceled &&
-                    !hasTicket
+                    !hasTicket &&
+                    activeEvent.startDate
                   "
                   @click="addTicket"
                   class="btn yellow shadow"
