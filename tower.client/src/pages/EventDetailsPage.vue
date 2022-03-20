@@ -59,7 +59,11 @@
                 <h5>This event is cancelled</h5>
               </div>
               <div class="col-4">
-                <button @click="createTicket" class="btn yellow shadow">
+                <button
+                  v-if="activeEvent.capacity > 0 && !activeEvent.isCanceled"
+                  @click="addTicket"
+                  class="btn yellow shadow"
+                >
                   Attend <i class="mdi mdi-ticket"></i>
                 </button>
               </div>
@@ -72,7 +76,7 @@
     <div class="row justify-content-center">
       <div class="col-6 justify-content-center bg-blue rounded shadow">
         <div class="row">
-          <div class="col-1" v-for="t in people" :key="t.id">
+          <div class="col-3" v-for="t in people" :key="t.id">
             <Tickets :ticket="t" />
           </div>
         </div>
@@ -98,7 +102,7 @@ export default {
       try {
         if (route.name == "EventDetails") {
           await towerEventsService.getEventById(route.params.id)
-          await towerEventsService.getPeopleTickets(route.params.id)
+          await towerEventsService.getEventTickets(route.params.id)
         }
       } catch (error) {
         logger.error(error)
@@ -118,9 +122,14 @@ export default {
           logger.error(error)
         }
       },
-      async createTicket() {
+      async addTicket() {
         try {
-          await ticketsService.createTicket({ eventId: route.params.id })
+          let newTicket = {
+            accountId: AppState.account.id,
+            eventId: AppState.activeEvent.id
+          }
+          await ticketsService.addTicket(newTicket)
+          // await ticketsService.addTicket({ eventId: route.params.id })
         } catch (error) {
           logger.error(error)
         }
