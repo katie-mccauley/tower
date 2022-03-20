@@ -32,6 +32,12 @@ export default {
       required: true,
     }
   },
+  props: {
+    myEvents: {
+      type: Object,
+      required: true,
+    }
+  },
   setup() {
     return {}
   }
