@@ -48,21 +48,22 @@ import { useRoute } from "vue-router"
 import { logger } from "../utils/Logger"
 import { towerEventsService } from "../services/TowerEventsService"
 import { Modal } from "bootstrap"
+import { watchEffect } from "@vue/runtime-core"
+import { AppState } from "../AppState"
 export default {
-  props: {
-    editData: {
-      type: Object,
-      required: true,
-    }
-  },
-  setup(props) {
+  setup() {
     const route = useRoute()
     const editable = ref({})
+    watchEffect(() => {
+      editable.value = { ...AppState.activeEvent }
+    })
     return {
       editable,
       async editEvent() {
         try {
-          await towerEventsService.editEvent(editable.value, route.params.id)
+
+          // props.editData.id = route.params.id
+          await towerEventsService.editEvent(editable.value)
           Modal.getOrCreateInstance(document.getElementById('edit-event')).hide()
         } catch (error) {
           logger.error(error)

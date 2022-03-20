@@ -102,7 +102,7 @@
   </div>
   <Modal id="edit-event">
     <template #title> Edit Event </template>
-    <template #body><EditTower :editData="activeEvent" /></template>
+    <template #body><EditTower /></template>
   </Modal>
 </template>
 

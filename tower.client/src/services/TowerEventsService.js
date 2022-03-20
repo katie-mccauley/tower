@@ -28,9 +28,11 @@ class TowerEventsService {
     AppState.towerEvents = AppState.towerEvents.filter(e => e.id !== id)
   }
 
-  async editEvent(body, id) {
-    const res = await api.put('api/events/' + id, body)
+  async editEvent(body) {
+
+    const res = await api.put('api/events/' + body.id, body)
     logger.log(res.data)
+    AppState.activeEvent = res.data
   }
 
   async getEventTickets(id) {

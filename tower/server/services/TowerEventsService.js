@@ -27,7 +27,7 @@ class TowerEventsService {
     if (original.creatorId.toString() !== update.creatorId) {
       throw new Forbidden("this is not your event")
     }
-    if (update.isCanceled) {
+    if (!original.isCanceled) {
 
 
       original.name = update.name ? update.name : original.name
