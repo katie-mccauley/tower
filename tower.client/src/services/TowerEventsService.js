@@ -28,6 +28,11 @@ class TowerEventsService {
     AppState.towerEvents = AppState.towerEvents.filter(e => e.id !== id)
   }
 
+  async editEvent(body, id) {
+    const res = await api.put('api/events/' + id, body)
+    logger.log(res.data)
+  }
+
   async getEventTickets(id) {
     const res = await api.get('api/events/' + id + '/tickets')
     logger.log("this is tickets", res.data)
@@ -68,6 +73,7 @@ class TowerEventsService {
     logger.log(expos)
     AppState.towerEvents = expos
   }
+
 }
 
 export const towerEventsService = new TowerEventsService()

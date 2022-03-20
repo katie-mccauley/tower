@@ -17,6 +17,19 @@
                   account.id == activeEvent.creatorId && !activeEvent.isCanceled
                 "
                 class="col-1"
+                title="edit event"
+              >
+                <i
+                  data-bs-toggle="modal"
+                  data-bs-target="#edit-event"
+                  class="selectable mdi mdi-application-edit"
+                ></i>
+              </div>
+              <div
+                v-if="
+                  account.id == activeEvent.creatorId && !activeEvent.isCanceled
+                "
+                class="col-1"
               >
                 <button
                   @click="cancelEvent"
@@ -87,6 +100,10 @@
       </div>
     </div>
   </div>
+  <Modal id="edit-event">
+    <template #title> Edit Event </template>
+    <template #body><EditTower :editData="activeEvent" /></template>
+  </Modal>
 </template>
 
 
