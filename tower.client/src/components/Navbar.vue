@@ -31,7 +31,14 @@
           title="Create Event"
           data-bs-toggle="modal"
           data-bs-target="#create-event"
-          class="btn btn-info green-button text-dark shadow ms-4"
+          class="
+            btn btn-info
+            green-button
+            text-dark
+            shadow
+            ms-4
+            col-5 col-md-12
+          "
         >
           Create Event
         </button>

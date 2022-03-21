@@ -63,6 +63,7 @@
         v-model="editable.capacity"
         required
         type="number"
+        min="0"
         class="form-control"
         aria-describedby="helpId"
         placeholder="capacity....."
@@ -126,6 +127,7 @@ import { logger } from "../utils/Logger"
 import { Modal } from "bootstrap"
 import { useRouter } from "vue-router"
 import { AppState } from "../AppState"
+import Pop from "../utils/Pop"
 export default {
   setup() {
     const editable = ref({})
@@ -141,6 +143,7 @@ export default {
           router.push({ name: 'EventDetails', params: { id: AppState.towerEvents[0].id } })
         } catch (error) {
           logger.error(error)
+          Pop.toast('error')
         }
       },
       towerEvents: computed(() => AppState.towerEvents.type),

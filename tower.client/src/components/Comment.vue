@@ -1,17 +1,27 @@
 <template>
   <div class="row">
-    <div class="col-1 me-0">
-      <button
-        v-if="account.id == comment.creatorId"
-        @click="deleteComment"
-        type="button"
-        class="btn-close btn-close-white"
-        aria-label="Close"
-      ></button>
-    </div>
-    <div class="col-11">
-      <img :src="comment.creator.picture" class="img-fluid cropped" alt="" />
-      <h5 class="lightcolor">{{ comment.creator.name }}: {{ comment.body }}</h5>
+    <!-- <div class="col-1 me-0 mt-2">
+      
+    </div> -->
+    <div class="col-md-11 col-10 m-2">
+      <div class="d-flex">
+        <button
+          v-if="account.id == comment.creatorId"
+          @click="deleteComment"
+          type="button"
+          class="btn-close btn-close-white"
+          aria-label="Close"
+        ></button>
+
+        <img
+          :src="comment.creator.picture"
+          class="img-fluid cropped me-2"
+          alt=""
+        />
+        <h5 class="ms-2 p-2 lightcolor">
+          {{ comment.creator.name }}: {{ comment.body }}
+        </h5>
+      </div>
     </div>
   </div>
 </template>

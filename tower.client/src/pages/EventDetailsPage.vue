@@ -1,22 +1,22 @@
 <template>
   <div class="container-fluid">
     <div class="row m-3 ms-5 justify-content-center lightcolor text-shadow">
-      <div class="col-6 m-0 p-0 bg-blue rounded shadow">
+      <div class="col-md-6 m-0 p-0 bg-blue rounded shadow card">
         <div class="row">
-          <div class="col-5">
+          <div class="col-md-5">
             <img
               class="img-fluid rounded shadow crop"
               :src="activeEvent.coverImg"
               alt=""
             />
           </div>
-          <div class="col-7">
+          <div class="col-md-7">
             <div class="row justify-content-end">
               <div
                 v-if="
                   account.id == activeEvent.creatorId && !activeEvent.isCanceled
                 "
-                class="col-1"
+                class="col-md-1"
                 title="edit event"
               >
                 <i
@@ -29,7 +29,7 @@
                 v-if="
                   account.id == activeEvent.creatorId && !activeEvent.isCanceled
                 "
-                class="col-1"
+                class="col-md-1"
               >
                 <button
                   @click="cancelEvent"
@@ -41,13 +41,16 @@
               </div>
             </div>
 
-            <h2 class="m-2">
-              {{ activeEvent.name }}
-              <!-- {{
-              new Date(
-                activeEvent.startDate || activeEvent.event.startDate
-              ).toLocaleDateString()
-            }} -->
+            <h2 class="m-2 pb-2">
+              <div class="pt-2">
+                {{ activeEvent.name }}
+              </div>
+
+              {{
+                new Date(
+                  activeEvent.startDate || activeEvent.startDate
+                ).toLocaleDateString()
+              }}
             </h2>
             <h3 class="m-2">{{ activeEvent.location }}</h3>
             <h6 class="me-5 m-2 mt-4">{{ activeEvent.description }}</h6>
@@ -94,7 +97,7 @@
     </div>
 
     <div class="row m-3 ms-5 justify-content-center">
-      <div class="col-6 justify-content-center bg-blue rounded shadow">
+      <div class="col-md-6 justify-content-center bg-blue rounded shadow">
         <div class="row">
           <div class="col-3" v-for="t in people" :key="t.id">
             <Tickets :ticket="t" />
@@ -104,7 +107,7 @@
     </div>
 
     <div class="row m-3 ms-5 justify-content-center">
-      <div class="col-6 justify-content-center bg-blue rounded shadow">
+      <div class="col-md-6 justify-content-center bg-blue rounded shadow">
         <div class="row" v-if="account.id">
           <div class="col-10">
             <CommentForm />
@@ -199,10 +202,11 @@ export default {
   backdrop-filter: blur(30px);
 }
 .crop {
-  height: 350px;
-  max-width: 350px;
+  height: 300px;
+  max-width: 300px;
   // border: 1px solid rgba(204, 243, 253, 0.4);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: cover;
 }
 
 .yellow {
