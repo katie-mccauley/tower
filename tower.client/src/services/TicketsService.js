@@ -21,7 +21,7 @@ class TicketsService {
     const create = { ...res.data, name: res.data.name, picture: res.data.picture }
     AppState.peopleTickets.push(create)
     AppState.activeEvent.capacity = AppState.activeEvent.capacity - 1
-    this.getEventTickets(newTicket)
+    this.getEventTickets(newTicket.eventId)
   }
 
   async getAccountTickets() {
@@ -37,16 +37,8 @@ class TicketsService {
     AppState.peopleTickets = AppState.peopleTickets.filter(p => p.id !== ticketId)
 
     AppState.towerEvents.capacity++
-    AppState.activeEvent = myId
-    towerEventsService.getEventById(myId)
-    // await this.getEventTickets(id)
-    // await this.activeTickets(myId)
+    this.getAccountTickets()
 
-  }
-  async activeTickets(eventId) {
-    let ticket = AppState.peopleTickets.find(p => p.eventId === eventId)
-    AppState.active = ticket
-    logger.log("this is activetickets", ticket)
   }
 }
 

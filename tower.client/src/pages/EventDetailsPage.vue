@@ -78,7 +78,7 @@
                     activeEvent.capacity > 0 &&
                     !activeEvent.isCanceled &&
                     !hasTicket &&
-                    activeEvent.startDate
+                    account.id
                   "
                   @click="addTicket"
                   title="Attend"
@@ -110,7 +110,7 @@
             <CommentForm />
           </div>
         </div>
-        <div class="row m-2">
+        <div class="row m-2" v-if="comments.length > 0">
           <div class="col-12" v-for="c in comments" :key="c.id">
             <Comment :comment="c" />
           </div>
@@ -185,7 +185,8 @@ export default {
           logger.error(error)
         }
       },
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      comment: computed(() => AppState.comments)
     }
   }
 }

@@ -79,7 +79,7 @@
         placeholder="startDate....."
       />
     </div>
-    <div class="col-md-4 mb-2">
+    <!-- <div class="col-md-4 mb-2">
       <label for="" class="form-label">type: </label>
       <input
         v-model="editable.type"
@@ -89,6 +89,26 @@
         aria-describedby="helpId"
         placeholder="type....."
       />
+    </div> -->
+    <label for="" class="form-label">Choose Type: </label>
+    <div class="btn-group m-2">
+      <select required name="" id="" class="px-2" v-model="editable.type">
+        <option value="concert">
+          <a class="dropdown-item" href="#">Concert</a>
+        </option>
+        <option value="sports">
+          <a class="dropdown-item" href="#">Sports</a>
+        </option>
+        <option value="convention">
+          <a class="dropdown-item" href="#">Convention</a>
+        </option>
+        <option value="digital">
+          <a class="dropdown-item" href="#">Digital</a>
+        </option>
+        <option value="expos">
+          <a class="dropdown-item" href="#">Expos</a>
+        </option>
+      </select>
     </div>
 
     <div class="col-12 d-flex justify-content-end">
@@ -99,7 +119,7 @@
 
 
 <script>
-import { ref } from "@vue/reactivity"
+import { computed, ref } from "@vue/reactivity"
 import { towerEventsService } from "../services/TowerEventsService"
 import { logger } from "../utils/Logger"
 import { Modal } from "bootstrap"
@@ -121,7 +141,8 @@ export default {
         } catch (error) {
           logger.error(error)
         }
-      }
+      },
+      towerEvents: computed(() => AppState.towerEvents.type)
     }
   }
 }
