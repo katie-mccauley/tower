@@ -6,6 +6,7 @@
       >
       <textarea
         v-model="editable.body"
+        maxlength="50"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"

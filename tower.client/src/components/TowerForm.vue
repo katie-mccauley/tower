@@ -98,7 +98,7 @@
         <option value="concert">
           <a class="dropdown-item" href="#">Concert</a>
         </option>
-        <option value="sports">
+        <option value="sport">
           <a class="dropdown-item" href="#">Sports</a>
         </option>
         <option value="convention">

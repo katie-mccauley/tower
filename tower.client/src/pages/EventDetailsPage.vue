@@ -114,7 +114,7 @@
           </div>
         </div>
         <div class="row m-2" v-if="comments.length > 0">
-          <div class="col-12" v-for="c in comments" :key="c.id">
+          <div class="col-md-12" v-for="c in comments" :key="c.id">
             <Comment :comment="c" />
           </div>
         </div>
@@ -207,6 +207,7 @@ export default {
   // border: 1px solid rgba(204, 243, 253, 0.4);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: cover;
+  object-fit: cover;
 }
 
 .yellow {

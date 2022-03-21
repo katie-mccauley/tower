@@ -21,10 +21,10 @@
 
         <h3>There are {{ tower.capacity }} seats left</h3>
         <h3>{{ tower.location }}</h3>
-        <div v-if="tower.isCanceled" class="bg-warning">
+        <div v-if="tower.isCanceled" class="text-dark yellow rounded">
           <h4>This is canceled</h4>
         </div>
-        <div v-if="tower.capacity <= 0" class="bg-danger">
+        <div v-if="tower.capacity <= 0" class="bg-danger text-light rounded">
           <h4>No more seats</h4>
         </div>
       </div>
@@ -58,5 +58,10 @@ export default {
   height: 300px;
   position: center;
   display: cover;
+  object-fit: cover;
+}
+
+.yellow {
+  background-color: rgba(255, 212, 100, 1);
 }
 </style>

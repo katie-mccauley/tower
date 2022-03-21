@@ -1,15 +1,13 @@
 <template>
   <div class="row">
-    <!-- <div class="col-1 me-0 mt-2">
-      
-    </div> -->
-    <div class="col-md-11 col-10 m-2">
-      <div class="d-flex">
+    <div class="col-1 me-0 mt-2"></div>
+    <div class="col-md-11 col-12 m-2">
+      <div class="d-flex cropped-text me-5">
         <button
           v-if="account.id == comment.creatorId"
           @click="deleteComment"
           type="button"
-          class="btn-close btn-close-white"
+          class="btn-close btn-close-white me-4 mt-3"
           aria-label="Close"
         ></button>
 
@@ -18,7 +16,7 @@
           class="img-fluid cropped me-2"
           alt=""
         />
-        <h5 class="ms-2 p-2 lightcolor">
+        <h5 class="ms-2 p-2 lightcolor box">
           {{ comment.creator.name }}: {{ comment.body }}
         </h5>
       </div>
@@ -71,5 +69,11 @@ export default {
   max-width: 50px;
   position: center;
   border-radius: 50%;
+}
+.cropped-text {
+  word-wrap: break-word;
+}
+.box {
+  inline-size: 150px;
 }
 </style>

@@ -25,6 +25,7 @@
         class="
           col-md-3
           m-2
+          mb-5
           bg-blue
           text-shadow
           rounded
