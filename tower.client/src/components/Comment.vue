@@ -73,7 +73,10 @@ export default {
 .cropped-text {
   word-wrap: break-word;
 }
-.box {
-  inline-size: 150px;
+
+@media screen AND (max-width: 600px) {
+  .box {
+    inline-size: 150px;
+  }
 }
 </style>

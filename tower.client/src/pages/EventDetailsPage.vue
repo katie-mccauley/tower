@@ -98,7 +98,7 @@
 
     <div class="row m-3 ms-5 justify-content-center">
       <div class="col-md-6 justify-content-center bg-blue rounded shadow">
-        <div class="row">
+        <div class="row p-2">
           <div class="col-3" v-for="t in people" :key="t.id">
             <Tickets :ticket="t" />
           </div>
