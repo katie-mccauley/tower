@@ -1,15 +1,21 @@
 import { query } from "express"
 import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
+import { towerEventsService } from "./TowerEventsService"
 
 class TicketsService {
 
   async removeTicket(ticketId, userId) {
-    const t = await dbContext.TowerEvents.findById(ticketId)
-    if (t.creatorId.toString() !== userId) {
+    const t = await dbContext.Tickets.findById(ticketId)
+    if (t.accountId.toString() !== userId) {
       throw new BadRequest("can't delete")
     }
     await t.remove()
+    const ticketEvent = await towerEventsService.getOne(t.eventId)
+    ticketEvent.capacity++
+    ticketEvent.save()
+    return t
+
   }
   async getEventTickets(query) {
     const tickets = await dbContext.Tickets.find(query).populate('account')

@@ -15,7 +15,7 @@
           <div class="row justify-content-end">
             <div class="col-1">
               <button
-                @click="deleteTicket(e.eventId, e.ticketId)"
+                @click="deleteTicket(e.accountId, e.ticketId)"
                 type="button"
                 class="btn-close btn-close-dark"
                 aria-label="Close"
@@ -62,6 +62,7 @@ export default {
     const route = useRoute()
     onMounted(async () => {
       try {
+
         await ticketsService.getAccountTickets()
       } catch (error) {
         logger.error(error)
@@ -71,10 +72,12 @@ export default {
       account: computed(() => AppState.account),
       // myEvents: computed(() => AppState.towerEvents.creatorId == AppState.account.id)
       myAttending: computed(() => AppState.attending),
-      async deleteTicket(eventId, ticketId) {
+      async deleteTicket(myId, ticketId) {
         try {
           // ticket.eventId = route.params.eventId
-          await ticketsService.deleteTicket(eventId, ticketId)
+          // AppState.account.id = event.creatorId
+
+          await ticketsService.deleteTicket(myId, ticketId)
         } catch (error) {
           logger.error(error)
         }
