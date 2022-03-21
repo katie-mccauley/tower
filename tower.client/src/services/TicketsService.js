@@ -46,6 +46,7 @@ class TicketsService {
   async activeTickets(eventId) {
     let ticket = AppState.peopleTickets.find(p => p.eventId === eventId)
     AppState.active = ticket
+    logger.log("this is activetickets", ticket)
   }
 }
 

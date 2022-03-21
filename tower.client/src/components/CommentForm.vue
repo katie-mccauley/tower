@@ -1,6 +1,6 @@
 <template>
   <form action="" @submit.prevent="createComment">
-    <div class="mb-3">
+    <div class="mb-3 m-2">
       <label for="exampleFormControlTextarea1" class="form-label lightcolor"
         >Make a comment</label
       >
@@ -11,7 +11,7 @@
         rows="3"
       ></textarea>
     </div>
-    <div class="col-12 d-flex justify-content-end">
+    <div class="col-12 d-flex justify-content-end mb-3">
       <button class="btn green-button">create</button>
     </div>
   </form>
@@ -19,9 +19,10 @@
 
 
 <script>
-import { ref } from "@vue/reactivity"
+import { computed, ref } from "@vue/reactivity"
 import { useRoute } from "vue-router"
 import { commentsService } from "../services/CommentsService"
+import { AppState } from "../AppState"
 export default {
   // props:{
   //   commentData:{
@@ -39,8 +40,10 @@ export default {
         editable.value.eventId = route.params.id
         await commentsService.createComment(editable.value)
         editable.value = {}
-      }
+      },
+      account: computed(() => AppState.account)
     }
+
   }
 }
 </script>

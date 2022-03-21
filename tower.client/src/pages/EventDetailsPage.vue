@@ -33,6 +33,7 @@
               >
                 <button
                   @click="cancelEvent"
+                  title="Cancel Event"
                   type="button"
                   class="btn-close btn-close-white"
                   aria-label="Close"
@@ -80,6 +81,7 @@
                     activeEvent.startDate
                   "
                   @click="addTicket"
+                  title="Attend"
                   class="btn yellow shadow"
                 >
                   Attend <i class="mdi mdi-ticket"></i>
@@ -103,12 +105,12 @@
 
     <div class="row m-3 ms-5 justify-content-center">
       <div class="col-6 justify-content-center bg-blue rounded shadow">
-        <div class="row">
+        <div class="row" v-if="account.id">
           <div class="col-10">
             <CommentForm />
           </div>
         </div>
-        <div class="row">
+        <div class="row m-2">
           <div class="col-12" v-for="c in comments" :key="c.id">
             <Comment :comment="c" />
           </div>
@@ -182,7 +184,8 @@ export default {
         } catch (error) {
           logger.error(error)
         }
-      }
+      },
+      account: computed(() => AppState.account)
     }
   }
 }

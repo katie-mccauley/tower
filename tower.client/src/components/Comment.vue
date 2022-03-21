@@ -23,6 +23,7 @@ import { useRoute } from "vue-router"
 import { commentsService } from "../services/CommentsService"
 import { logger } from "../utils/Logger"
 import { AppState } from "../AppState"
+import Pop from "../utils/Pop"
 export default {
   props: {
     comment: {
@@ -36,7 +37,10 @@ export default {
       async deleteComment() {
         try {
           props.comment.eventId = route.params.id
-          await commentsService.deleteComment(props.comment.id)
+          if (await Pop.confirm()) {
+            await commentsService.deleteComment(props.comment.id)
+          }
+
         } catch (error) {
           logger.error(error)
         }

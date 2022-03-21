@@ -1,21 +1,22 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-6 text-white">
+      <div class="col-md-6 text-white">
         <h1>Events for {{ account.name }}</h1>
       </div>
     </div>
     <div class="row justify-content-center">
       <div
-        class="col-3 m-2 bg-blue shadow rounded"
+        class="col-md-3 col-10 m-2 bg-blue shadow rounded"
         v-for="e in myAttending"
         :key="e.id"
       >
         <div class="component text-dark">
           <div class="row justify-content-end">
-            <div class="col-1">
+            <div class="col-md-1">
               <button
                 @click="deleteTicket(e.accountId, e.ticketId)"
+                title="Delete Ticket"
                 type="button"
                 class="btn-close btn-close-dark"
                 aria-label="Close"
@@ -32,7 +33,7 @@
               }}
             </h3>
 
-            <h3>There are {{ e.capacity }} seats left</h3>
+            <h3 v-if="e.capacity > 0">There are {{ e.capacity }} seats left</h3>
             <h3>{{ e.location }}</h3>
             <div v-if="e.isCanceled" class="bg-warning">
               <h4>This is canceled</h4>
@@ -55,6 +56,7 @@ import { accountService } from "../services/AccountService"
 import { logger } from "../utils/Logger"
 import { useRoute } from "vue-router"
 import { ticketsService } from "../services/TicketsService"
+import Pop from "../utils/Pop"
 export default {
 
   name: 'Account',
@@ -76,8 +78,11 @@ export default {
         try {
           // ticket.eventId = route.params.eventId
           // AppState.account.id = event.creatorId
+          if (await Pop.confirm()) {
+            await ticketsService.deleteTicket(myId, ticketId)
+          }
 
-          await ticketsService.deleteTicket(myId, ticketId)
+
         } catch (error) {
           logger.error(error)
         }

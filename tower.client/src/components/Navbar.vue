@@ -28,6 +28,7 @@
         </li> -->
 
         <button
+          title="Create Event"
           data-bs-toggle="modal"
           data-bs-target="#create-event"
           class="btn btn-info green-button text-dark shadow ms-4"
