@@ -26,6 +26,7 @@ class TowerEventsService {
     const res = await api.delete('api/events/' + id)
     logger.log(res.data)
     AppState.towerEvents = AppState.towerEvents.filter(e => e.id !== id)
+    this.getAllEvents()
   }
 
   async editEvent(body) {
@@ -50,7 +51,7 @@ class TowerEventsService {
 
   async getSports() {
     await this.getAllEvents()
-    let sports = AppState.towerEvents.filter(t => t.type === 'sport')
+    let sports = AppState.towerEvents.filter(t => t.type === 'sports')
     logger.log(sports)
     AppState.towerEvents = sports
   }

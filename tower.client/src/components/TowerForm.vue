@@ -62,7 +62,7 @@
       <input
         v-model="editable.capacity"
         required
-        type="text"
+        type="number"
         class="form-control"
         aria-describedby="helpId"
         placeholder="capacity....."
@@ -73,7 +73,8 @@
       <input
         v-model="editable.startDate"
         required
-        type="text"
+        type="date"
+        min="2022-03-22"
         class="form-control"
         aria-describedby="helpId"
         placeholder="startDate....."
@@ -142,7 +143,7 @@ export default {
           logger.error(error)
         }
       },
-      towerEvents: computed(() => AppState.towerEvents.type)
+      towerEvents: computed(() => AppState.towerEvents.type),
     }
   }
 }
