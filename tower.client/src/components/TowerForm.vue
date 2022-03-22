@@ -75,7 +75,7 @@
         v-model="editable.startDate"
         required
         type="date"
-        min="2022-03-22"
+        min="2022-03-23"
         class="form-control"
         aria-describedby="helpId"
         placeholder="startDate....."
@@ -99,7 +99,7 @@
           <a class="dropdown-item" href="#">Concert</a>
         </option>
         <option value="sport">
-          <a class="dropdown-item" href="#">Sports</a>
+          <a class="dropdown-item" href="#">Sport</a>
         </option>
         <option value="convention">
           <a class="dropdown-item" href="#">Convention</a>

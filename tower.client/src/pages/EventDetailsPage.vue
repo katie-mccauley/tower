@@ -1,22 +1,24 @@
 <template>
   <div class="container-fluid">
-    <div class="row m-3 ms-5 justify-content-center lightcolor text-shadow">
+    <div
+      class="row m-3 ms-5 mb-0 justify-content-center lightcolor text-shadow"
+    >
       <div class="col-md-6 m-0 p-0 bg-blue rounded shadow card">
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-5 mb-0">
             <img
               class="img-fluid rounded shadow crop"
               :src="activeEvent.coverImg"
               alt=""
             />
           </div>
-          <div class="col-md-7">
+          <div class="col-md-7 mb-0">
             <div class="row justify-content-end">
               <div
                 v-if="
                   account.id == activeEvent.creatorId && !activeEvent.isCanceled
                 "
-                class="col-md-1"
+                class="col-md-1 col-2 p-2"
                 title="edit event"
               >
                 <i
@@ -29,7 +31,7 @@
                 v-if="
                   account.id == activeEvent.creatorId && !activeEvent.isCanceled
                 "
-                class="col-md-1"
+                class="col-md-1 col-2 p-2"
               >
                 <button
                   @click="cancelEvent"
@@ -42,7 +44,7 @@
             </div>
 
             <h2 class="m-2 pb-2">
-              <div class="pt-2">
+              <div class="pb-2">
                 {{ activeEvent.name }}
               </div>
 
@@ -51,15 +53,16 @@
                   activeEvent.startDate || activeEvent.startDate
                 ).toLocaleDateString()
               }}
+              {{ activeEvent.location }}
             </h2>
-            <h3 class="m-2">{{ activeEvent.location }}</h3>
+
             <h6 class="me-5 m-2 mt-4">{{ activeEvent.description }}</h6>
-            <div class="row m-3 justify-content-between">
+            <div class="row m-1 justify-content-between">
               <div
                 v-if="
                   activeEvent.capacity > 0 && activeEvent.isCanceled == false
                 "
-                class="col-3"
+                class="col-md-3 col-6"
               >
                 <p class="text-bold">{{ activeEvent.capacity }} spots left</p>
               </div>
@@ -75,7 +78,7 @@
               >
                 <h5>This event is cancelled</h5>
               </div>
-              <div class="col-4">
+              <div class="col-4 me-3">
                 <button
                   v-if="
                     activeEvent.capacity > 0 &&
@@ -85,7 +88,7 @@
                   "
                   @click="addTicket"
                   title="Attend"
-                  class="btn yellow shadow"
+                  class="btn yellow shadow m-1"
                 >
                   Attend <i class="mdi mdi-ticket"></i>
                 </button>
@@ -202,7 +205,7 @@ export default {
   backdrop-filter: blur(30px);
 }
 .crop {
-  height: 300px;
+  height: 350px;
   max-width: 300px;
   // border: 1px solid rgba(204, 243, 253, 0.4);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

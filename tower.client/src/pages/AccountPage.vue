@@ -11,14 +11,19 @@
         v-for="e in myAttending"
         :key="e.id"
       >
-        <div class="component text-dark">
+        <img
+          :src="e.coverImg"
+          class="img-fluid rounded card-img-top cropped mt-2"
+          alt=""
+        />
+        <div class="card-body text-dark">
           <div class="row justify-content-end">
             <div class="col-md-1">
               <button
                 @click="deleteTicket(e.accountId, e.ticketId)"
                 title="Delete Ticket"
                 type="button"
-                class="btn-close btn-close-dark"
+                class="btn-close btn-close-white"
                 aria-label="Close"
               ></button>
             </div>
@@ -104,5 +109,12 @@ img {
 }
 .lightcolor {
   color: rgba(204, 243, 253, 1);
+}
+.cropped {
+  height: 300px;
+  max-width: 650px;
+  position: center;
+  display: cover;
+  object-fit: cover;
 }
 </style>

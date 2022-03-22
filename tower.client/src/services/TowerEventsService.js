@@ -51,7 +51,7 @@ class TowerEventsService {
 
   async getSports() {
     await this.getAllEvents()
-    let sports = AppState.towerEvents.filter(t => t.type === 'sports')
+    let sports = AppState.towerEvents.filter(t => t.type === 'sport')
     logger.log(sports)
     AppState.towerEvents = sports
   }

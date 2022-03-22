@@ -49,9 +49,13 @@ import { AppState } from "../AppState"
 export default {
   name: 'Home',
   setup() {
-    // onMounted(async () => {
-
-    // })
+    onMounted(async () => {
+      try {
+        await towerEventsService.getAllEvents()
+      } catch (error) {
+        logger.error(error)
+      }
+    })
     return {
       towerEvents: computed(() => AppState.towerEvents),
       async getAll() {
