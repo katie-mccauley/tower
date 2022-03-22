@@ -7,13 +7,14 @@
       <textarea
         v-model="editable.body"
         maxlength="50"
+        minlength="3"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
       ></textarea>
     </div>
     <div class="col-12 d-flex justify-content-end mb-3">
-      <button class="btn green-button">create</button>
+      <button class="btn green-button" title="create comment">create</button>
     </div>
   </form>
 </template>

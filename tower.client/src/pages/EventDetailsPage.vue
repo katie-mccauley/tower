@@ -53,6 +53,7 @@
                   activeEvent.startDate || activeEvent.startDate
                 ).toLocaleDateString()
               }}
+
               {{ activeEvent.location }}
             </h2>
 
