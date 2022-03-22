@@ -89,7 +89,7 @@
                   "
                   @click="addTicket"
                   title="Attend"
-                  class="btn yellow shadow m-1"
+                  class="btn yellow shadow m-2 px-2 py-1"
                 >
                   Attend <i class="mdi mdi-ticket"></i>
                 </button>
