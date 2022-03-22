@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
-    <div class="row justify-content-center">
+    <div class="row justify-content-start ms-5">
       <div class="col-md-6 text-white">
-        <h1>Events for {{ account.name }}</h1>
+        <h1 class="lightcolor">Events for {{ account.name }}</h1>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -116,5 +116,9 @@ img {
   position: center;
   display: cover;
   object-fit: cover;
+}
+
+.lightcolor {
+  color: rgba(204, 243, 253, 1);
 }
 </style>
