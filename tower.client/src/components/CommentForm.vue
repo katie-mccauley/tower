@@ -8,6 +8,7 @@
         v-model="editable.body"
         maxlength="50"
         minlength="3"
+        required
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
@@ -25,6 +26,8 @@ import { computed, ref } from "@vue/reactivity"
 import { useRoute } from "vue-router"
 import { commentsService } from "../services/CommentsService"
 import { AppState } from "../AppState"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 export default {
   // props:{
   //   commentData:{
@@ -39,9 +42,15 @@ export default {
     return {
       editable,
       async createComment() {
-        editable.value.eventId = route.params.id
-        await commentsService.createComment(editable.value)
-        editable.value = {}
+        try {
+          editable.value.eventId = route.params.id
+          await commentsService.createComment(editable.value)
+          editable.value = {}
+        } catch (error) {
+          logger.error(error)
+          Pop.toast('error')
+        }
+
       },
       account: computed(() => AppState.account)
     }

@@ -7,6 +7,7 @@
           v-if="account.id == comment.creatorId"
           @click="deleteComment"
           type="button"
+          title="Delete Comment"
           class="btn-close btn-close-white me-4 mt-3"
           aria-label="Close"
         ></button>
