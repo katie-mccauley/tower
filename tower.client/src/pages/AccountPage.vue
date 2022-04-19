@@ -22,7 +22,7 @@
             @click="deleteTicket(e.accountId, e.ticketId)"
             title="Delete Ticket"
             type="button"
-            class="btn-close btn-close-black"
+            class="btn-close btn-close-white"
             aria-label="Close"
           ></button>
         </div>
