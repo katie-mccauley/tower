@@ -16,6 +16,8 @@
         bg-dark
         navbar-expand-lg
         justify-content-between
+        rounded
+        shadow
       "
     >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
