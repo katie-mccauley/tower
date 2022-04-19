@@ -1,14 +1,14 @@
 <template>
   <router-link :to="{ name: 'EventDetails', params: { id: tower.id } }">
     <div class="lightcolor">
-      <div class="p-2">
+      <div class="">
         <img
-          class="img-fluid card-img-top cropped rounded"
+          class="img-fluid card-img-top cropped rounded-top p-0"
           :src="tower.coverImg"
           alt=""
         />
       </div>
-      <div class="card-body">
+      <div class="card-body filter">
         <h3>{{ tower.name }}</h3>
         <h3>
           The start date is
@@ -63,5 +63,9 @@ export default {
 
 .yellow {
   background-color: rgba(255, 212, 100, 1);
+}
+
+.filter {
+  filter: drop-shadow(0 0 0.75rem crimson);
 }
 </style>

@@ -1,30 +1,52 @@
 <template>
   <div class="container-fluid">
-    <ul class="nav">
-      <li class="nav-item" @click="getAll">
-        <a class="nav-link active" aria-current="page" href="#">All</a>
-      </li>
-      <li class="nav-item" @click="getConcert">
-        <a class="nav-link active" href="#">Concert</a>
-      </li>
-      <li class="nav-item" @click="getSports">
-        <a class="nav-link" href="#">Sports</a>
-      </li>
-      <li class="nav-item" @click="getConventions">
-        <a class="nav-link" href="#">Convention</a>
-      </li>
-      <li class="nav-item" @click="getDigital">
-        <a class="nav-link" href="#">Digital</a>
-      </li>
-      <li class="nav-item" @click="getExpos">
-        <a class="nav-link" href="#">Expos</a>
-      </li>
-    </ul>
+    <div class="row mt-2 mb-2 ms-1 me-1 justify-content-center">
+      <div id="col-12">
+        <img
+          src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGZlc3RpdmFsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+          class="rounded shadow w-100 dimen"
+          alt=""
+        />
+        <!-- <h1 class="text-transparent">Towe</h1> -->
+      </div>
+    </div>
+    <nav
+      class="
+        navbar navbar-dark
+        bg-dark
+        navbar-expand-lg
+        justify-content-between
+      "
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item me-5" @click="getAll">
+          <a class="nav-link active" aria-current="page" href="#"
+            ><h3>All</h3>
+          </a>
+        </li>
+        <li class="nav-item me-5" @click="getConcert">
+          <a class="nav-link active" href="#"><h3>Concert</h3> </a>
+        </li>
+        <li class="nav-item me-5" @click="getSports">
+          <a class="nav-link" href="#"><h3>Sports</h3> </a>
+        </li>
+        <li class="nav-item me-5" @click="getConventions">
+          <a class="nav-link" href="#"><h3>Convention</h3></a>
+        </li>
+        <li class="nav-item me-5" @click="getDigital">
+          <a class="nav-link" href="#"><h3>Digital</h3> </a>
+        </li>
+        <li class="nav-item me-5" @click="getExpos">
+          <a class="nav-link" href="#"><h3>Expos</h3> </a>
+        </li>
+      </ul>
+    </nav>
     <div class="row justify-content-around m-2 mb-4">
       <div
         class="
           col-md-3
           m-2
+          p-0
           mb-5
           bg-blue
           text-shadow
@@ -125,6 +147,9 @@ export default {
       object-position: center;
     }
   }
+  .filter {
+    filter: drop-shadow(0 0 0.75rem crimson);
+  }
 }
 
 .bg-blue {
@@ -136,5 +161,16 @@ export default {
   background-image: v-bind(pic);
   background-position: center;
   background-size: cover;
+}
+
+#back-img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.dimen {
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
 }
 </style>

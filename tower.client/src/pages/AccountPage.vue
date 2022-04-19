@@ -7,18 +7,28 @@
     </div>
     <div class="row justify-content-center">
       <div
-        class="col-md-3 col-10 m-2 bg-blue shadow rounded"
+        class="col-md-3 col-10 m-2 bg-blue shadow rounded p-0"
         v-for="e in myAttending"
         :key="e.id"
       >
         <img
           :src="e.coverImg"
-          class="img-fluid rounded card-img-top cropped mt-2"
+          class="img-fluid p-0 rounded card-img-top cropped"
           alt=""
         />
-        <div class="card-body text-dark">
+
+        <div class="col-12 card-img-overlay text-end">
+          <button
+            @click="deleteTicket(e.accountId, e.ticketId)"
+            title="Delete Ticket"
+            type="button"
+            class="btn-close btn-close-black"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="card-body text-dark filter">
           <div class="row justify-content-end">
-            <div class="col-md-1">
+            <!-- <div class="col-md-1">
               <button
                 @click="deleteTicket(e.accountId, e.ticketId)"
                 title="Delete Ticket"
@@ -26,7 +36,7 @@
                 class="btn-close btn-close-white"
                 aria-label="Close"
               ></button>
-            </div>
+            </div> -->
           </div>
 
           <div class="lightcolor">
@@ -120,5 +130,9 @@ img {
 
 .lightcolor {
   color: rgba(204, 243, 253, 1);
+}
+
+.filter {
+  filter: drop-shadow(0 0 0.75rem crimson);
 }
 </style>
