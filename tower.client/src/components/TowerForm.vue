@@ -75,7 +75,7 @@
         v-model="editable.startDate"
         required
         type="date"
-        min="2022-03-23"
+        :min="minDate.toISOString().split('T')[0]"
         class="form-control"
         aria-describedby="helpId"
         placeholder="startDate....."
@@ -147,6 +147,12 @@ export default {
         }
       },
       towerEvents: computed(() => AppState.towerEvents.type),
+      minDate: computed(() => {
+        const today = new Date()
+        const tomorrow = new Date()
+        tomorrow.setDate(today.getDate() + 1)
+        return tomorrow
+      })
     }
   }
 }
