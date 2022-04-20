@@ -20,14 +20,12 @@
         shadow
       "
     >
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-tabs">
         <li class="nav-item me-5" @click="getAll">
-          <a class="nav-link active" aria-current="page" href="#"
-            ><h3>All</h3>
-          </a>
+          <a class="nav-link" aria-current="page" href="#"><h3>All</h3> </a>
         </li>
         <li class="nav-item me-5" @click="getConcert">
-          <a class="nav-link active" href="#"><h3>Concert</h3> </a>
+          <a class="nav-link" href="#"><h3>Concert</h3> </a>
         </li>
         <li class="nav-item me-5" @click="getSports">
           <a class="nav-link" href="#"><h3>Sports</h3> </a>
@@ -44,21 +42,7 @@
       </ul>
     </nav>
     <div class="row justify-content-around m-2 mb-4">
-      <div
-        class="
-          col-md-3
-          m-2
-          p-0
-          mb-5
-          bg-blue
-          text-shadow
-          rounded
-          shadow
-          picture-background
-        "
-        v-for="t in towerEvents"
-        :key="t.id"
-      >
+      <div class="col-md-3" v-for="t in towerEvents" :key="t.id">
         <Tower :tower="t" />
       </div>
     </div>
@@ -174,5 +158,9 @@ export default {
   height: 300px;
   object-fit: cover;
   object-position: center;
+}
+
+.nav-tabs.active {
+  background-color: rgb(82, 207, 239);
 }
 </style>

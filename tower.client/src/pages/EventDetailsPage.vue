@@ -3,16 +3,16 @@
     <div
       class="row m-3 ms-5 mb-0 justify-content-center lightcolor text-shadow"
     >
-      <div class="col-md-6 m-0 p-0 bg-blue rounded shadow card">
+      <div class="col-md-9 m-0 p-0 bg-blue rounded shadow card">
         <div class="row">
-          <div class="col-md-5 mb-0">
+          <div class="col-md-4 mb-0">
             <img
               class="img-fluid rounded shadow crop"
               :src="activeEvent.coverImg"
               alt=""
             />
           </div>
-          <div class="col-md-7 mb-0">
+          <div class="col-md-8 mb-0">
             <div class="row justify-content-end">
               <div
                 v-if="
@@ -101,7 +101,7 @@
     </div>
 
     <div class="row m-3 ms-5 justify-content-center">
-      <div class="col-md-6 justify-content-center bg-blue rounded shadow">
+      <div class="col-md-9 justify-content-center bg-blue rounded shadow">
         <div class="row p-2">
           <div class="col-3" v-for="t in people" :key="t.id">
             <Tickets :ticket="t" />
@@ -111,7 +111,7 @@
     </div>
 
     <div class="row m-3 ms-5 justify-content-center">
-      <div class="col-md-6 justify-content-center bg-blue rounded shadow">
+      <div class="col-md-9 justify-content-center bg-blue rounded shadow">
         <div class="row" v-if="account.id">
           <div class="col-10">
             <CommentForm />
@@ -207,11 +207,17 @@ export default {
 }
 .crop {
   height: 350px;
-  max-width: 300px;
+  max-width: 500px;
   // border: 1px solid rgba(204, 243, 253, 0.4);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: cover;
   object-fit: cover;
+}
+
+@media screen AND (max-width: 600px) {
+  .crop {
+    max-width: 300px;
+  }
 }
 
 .yellow {

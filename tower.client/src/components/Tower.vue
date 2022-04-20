@@ -1,31 +1,46 @@
 <template>
   <router-link :to="{ name: 'EventDetails', params: { id: tower.id } }">
-    <div class="lightcolor">
-      <div class="">
-        <img
-          class="img-fluid card-img-top cropped rounded-top p-0"
-          :src="tower.coverImg"
-          alt=""
-        />
-      </div>
-      <div class="card-body filter">
-        <h3>{{ tower.name }}</h3>
-        <h3>
-          The start date is
-          {{
-            new Date(
-              tower.startDate || tower.event.startDate
-            ).toLocaleDateString()
-          }}
-        </h3>
+    <div class="lightcolor card selectable border border-3 rounded m-3 p-0">
+      <img class="img-fluid cropped p-0" :src="tower.coverImg" alt="" />
+      <div class="card-img-overlay pb-0 align-items-end m-0 filter">
+        <div
+          class="row justify-content-md-around box align-items-end h-100 p-0"
+        >
+          <div class="col-md-12 col-8 backgroundfix m-0 w-100 p-0">
+            <div>
+              <div class="p-1">
+                <h4>{{ tower.name }}</h4>
+                <h5>
+                  {{
+                    new Date(
+                      tower.startDate || tower.event.startDate
+                    ).toLocaleDateString()
+                  }}
+                </h5>
+              </div>
+              <div class="row p-1">
+                <div class="col-8">
+                  <h5>{{ tower.location }}</h5>
+                </div>
+                <div v-if="tower.capacity > 0" class="col-4">
+                  <h5>{{ tower.capacity }} spots</h5>
+                </div>
+              </div>
 
-        <h3>There are {{ tower.capacity }} seats left</h3>
-        <h3>{{ tower.location }}</h3>
-        <div v-if="tower.isCanceled" class="text-dark yellow rounded">
-          <h4>This is canceled</h4>
-        </div>
-        <div v-if="tower.capacity <= 0" class="bg-danger text-light rounded">
-          <h4>No more seats</h4>
+              <div
+                v-if="tower.isCanceled"
+                class="text-dark yellow rounded mb-0"
+              >
+                <h5 class="mb-0">This is canceled</h5>
+              </div>
+              <div
+                v-if="tower.capacity <= 0"
+                class="bg-danger text-light rounded mb-0 pb-0"
+              >
+                <h5 class="mb-0">No more seats</h5>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -67,5 +82,12 @@ export default {
 
 .filter {
   filter: drop-shadow(0 0 0.75rem crimson);
+}
+
+.backgroundfix {
+  background: rgba(204, 243, 253, 0.2);
+  border: 1px solid rgba(86, 199, 251, 0.2);
+  box-sizing: border-box;
+  backdrop-filter: blur(20px);
 }
 </style>

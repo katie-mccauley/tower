@@ -7,28 +7,46 @@
     </div>
     <div class="row justify-content-center">
       <div
-        class="col-md-3 col-10 m-2 bg-blue shadow rounded p-0"
+        class="col-md-3 col-10 lightcolor rounded p-0 m-2"
         v-for="e in myAttending"
         :key="e.id"
       >
-        <img
-          :src="e.coverImg"
-          class="img-fluid p-0 rounded card-img-top cropped"
-          alt=""
-        />
+        <div class="card selectable border border-3 rounded p-0 m-0">
+          <img :src="e.coverImg" class="img-fluid p-0 cropped" alt="" />
 
-        <div class="col-12 card-img-overlay text-end">
-          <button
-            @click="deleteTicket(e.accountId, e.ticketId)"
-            title="Delete Ticket"
-            type="button"
-            class="btn-close btn-close-white"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="card-body text-dark filter">
-          <div class="row justify-content-end">
-            <!-- <div class="col-md-1">
+          <div class="col-12 card-img-overlay text-end p-0">
+            <button
+              @click="deleteTicket(e.accountId, e.ticketId)"
+              title="Delete Ticket"
+              type="button"
+              class="btn-close btn-close-white"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div
+            class="
+              card-img-overlay
+              p-0
+              align-items-end
+              m-0
+              text-dark
+              filter
+              lightcolor
+            "
+          >
+            <div
+              class="
+                row
+                justify-content-md-around
+                align-items-end
+                h-50
+                mt-md-4
+                p-0
+                mb-md-4 mb-4
+                m-0
+              "
+            >
+              <!-- <div class="col-md-1">
               <button
                 @click="deleteTicket(e.accountId, e.ticketId)"
                 title="Delete Ticket"
@@ -37,24 +55,34 @@
                 aria-label="Close"
               ></button>
             </div> -->
-          </div>
-
-          <div class="lightcolor">
-            <h3>{{ e.name }}</h3>
-            <h3>
-              The start date is
-              {{
-                new Date(e.startDate || e.event.startDate).toLocaleDateString()
-              }}
-            </h3>
-
-            <h3 v-if="e.capacity > 0">There are {{ e.capacity }} seats left</h3>
-            <h3>{{ e.location }}</h3>
-            <div v-if="e.isCanceled" class="bg-warning">
-              <h4>This is canceled</h4>
             </div>
-            <div v-if="e.capacity <= 0" class="bg-danger">
-              <h4>No more seats</h4>
+            <div class="col-md-12 col-8 backgroundfix m-0 w-100 p-0">
+              <div>
+                <h4 class="lightcolor">{{ e.name }}</h4>
+                <h4 class="lightcolor">
+                  {{
+                    new Date(
+                      e.startDate || e.event.startDate
+                    ).toLocaleDateString()
+                  }}
+                </h4>
+                <div class="row">
+                  <div class="col-8">
+                    <h5 class="lightcolor">{{ e.location }}</h5>
+                  </div>
+                  <div class="col-4">
+                    <h5 class="lightcolor" v-if="e.capacity > 0">
+                      {{ e.capacity }} spots
+                    </h5>
+                  </div>
+                </div>
+                <div v-if="e.isCanceled" class="bg-warning">
+                  <h5>This is canceled</h5>
+                </div>
+                <div v-if="e.capacity <= 0" class="bg-danger">
+                  <h5>No more seats</h5>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -126,6 +154,13 @@ img {
   position: center;
   display: cover;
   object-fit: cover;
+}
+
+.backgroundfix {
+  background: rgba(204, 243, 253, 0.2);
+  border: 1px solid rgba(86, 199, 251, 0.2);
+  box-sizing: border-box;
+  backdrop-filter: blur(20px);
 }
 
 .lightcolor {
