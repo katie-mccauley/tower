@@ -65,6 +65,7 @@ export default {
       }
     })
     return {
+
       towerEvents: computed(() => AppState.towerEvents),
       async getAll() {
         try {

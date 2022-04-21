@@ -19,7 +19,8 @@ class TowerEventsService {
 
   async getAll(query = {}) {
     const towerEvents = await dbContext.TowerEvents.find(query).populate('creator')
-    return towerEvents
+
+    return dbContext.TowerEvents.find({ startDate: { $gte: new Date() } })
   }
 
   async editEvent(update) {
