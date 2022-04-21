@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-1 me-0 mt-2"></div>
-    <div class="col-md-11 col-12 m-2">
+    <div class="col-md-11 col-12 m-2 background p-3 rounded shadow">
       <div class="d-flex cropped-text me-5">
         <button
           v-if="account.id == comment.creatorId"
@@ -13,12 +13,12 @@
         ></button>
 
         <img
-          :src="comment.creator.picture"
+          :src="comment.creator?.picture"
           class="img-fluid cropped me-2"
           alt=""
         />
         <h5 class="ms-2 p-2 lightcolor box">
-          {{ comment.creator.name }}: {{ comment.body }}
+          {{ comment.creator?.name }}: {{ comment.body }}
         </h5>
       </div>
     </div>
@@ -73,6 +73,10 @@ export default {
 }
 .cropped-text {
   word-wrap: break-word;
+}
+
+.background {
+  background-color: #2a2d3a;
 }
 
 @media screen AND (max-width: 600px) {

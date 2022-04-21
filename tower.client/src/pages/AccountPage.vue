@@ -11,18 +11,8 @@
         v-for="e in myAttending"
         :key="e.id"
       >
-        <div class="card selectable border border-3 rounded p-0 m-0">
+        <div class="card border border-3 rounded p-0 m-0">
           <img :src="e.coverImg" class="img-fluid p-0 cropped" alt="" />
-
-          <div class="col-12 card-img-overlay text-end p-0">
-            <button
-              @click="deleteTicket(e.accountId, e.ticketId)"
-              title="Delete Ticket"
-              type="button"
-              class="btn-close btn-close-white"
-              aria-label="Close"
-            ></button>
-          </div>
           <div
             class="
               card-img-overlay
@@ -58,7 +48,23 @@
             </div>
             <div class="col-md-12 col-8 backgroundfix m-0 w-100 p-0">
               <div>
-                <h4 class="lightcolor">{{ e.name }}</h4>
+                <div class="row">
+                  <div class="col-10">
+                    <h4 class="lightcolor">
+                      {{ e.name }}
+                    </h4>
+                  </div>
+                  <div class="col-md-1 col-2 ps-4">
+                    <button
+                      @click="deleteTicket(e.accountId, e.ticketId)"
+                      title="Delete Ticket"
+                      type="button"
+                      class="btn-close btn-close-white"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                </div>
+
                 <h4 class="lightcolor">
                   {{
                     new Date(
