@@ -7,7 +7,7 @@
     </div>
     <div class="row justify-content-center">
       <div
-        class="col-md-3 col-10 lightcolor rounded p-0 m-2"
+        class="col-md-3 col-10 lightcolor rounded p-0 m-4"
         v-for="e in myAttending"
         :key="e.id"
       >
@@ -17,11 +17,11 @@
             class="
               card-img-overlay
               p-0
-              align-items-end
               m-0
               text-dark
               filter
               lightcolor
+              align-items-end
             "
           >
             <div
@@ -29,10 +29,8 @@
                 row
                 justify-content-md-around
                 align-items-end
-                h-50
-                mt-md-4
+                h-100
                 p-0
-                mb-md-4 mb-4
                 m-0
               "
             >
@@ -45,11 +43,10 @@
                 aria-label="Close"
               ></button>
             </div> -->
-            </div>
-            <div class="col-md-12 col-8 backgroundfix m-0 w-100 p-0">
-              <div>
-                <div class="row">
-                  <div class="col-10">
+
+              <div class="col-md-12 col-8 backgroundfix m-0 w-100 p-0">
+                <div class="row p-0 m-0">
+                  <div class="col-md-10 col-10 ps-0">
                     <h4 class="lightcolor">
                       {{ e.name }}
                     </h4>
@@ -73,7 +70,7 @@
                   }}
                 </h4>
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-7">
                     <h5 class="lightcolor">{{ e.location }}</h5>
                   </div>
                   <div class="col-4">

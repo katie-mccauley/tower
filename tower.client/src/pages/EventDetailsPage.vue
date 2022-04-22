@@ -1,8 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div
-      class="row m-3 ms-5 mb-0 justify-content-center lightcolor text-shadow"
-    >
+    <div class="row m-3 mb-0 justify-content-center lightcolor text-shadow">
       <div class="col-md-9 m-0 p-0 bg-blue rounded shadow card">
         <div class="row">
           <div class="col-md-4 mb-0">
@@ -100,7 +98,7 @@
       </div>
     </div>
 
-    <div class="row m-3 ms-5 justify-content-center">
+    <div class="row m-3 justify-content-center">
       <div class="col-md-9 justify-content-center bg-blue rounded shadow">
         <div class="row p-2">
           <div class="col-3" v-for="t in people" :key="t.id">
@@ -110,10 +108,10 @@
       </div>
     </div>
 
-    <div class="row m-3 ms-5 justify-content-center">
+    <div class="row m-3 justify-content-center">
       <div class="col-md-9 justify-content-center bg-blue rounded shadow">
         <div class="row" v-if="account.id">
-          <div class="col-10">
+          <div class="col-md-10 col-12">
             <CommentForm />
           </div>
         </div>
@@ -216,7 +214,7 @@ export default {
 
 @media screen AND (max-width: 600px) {
   .crop {
-    max-width: 300px;
+    max-width: 333px;
   }
 }
 
