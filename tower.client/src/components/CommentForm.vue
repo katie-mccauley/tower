@@ -29,12 +29,6 @@ import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 export default {
-  // props:{
-  //   commentData:{
-  //     type: Object, 
-  //     required: false
-  //   }
-  // },
 
   setup() {
     const route = useRoute()

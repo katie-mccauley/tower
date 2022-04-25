@@ -9,15 +9,10 @@ class TicketsService {
     const res = await api.get('api/events/' + id + '/tickets')
     logger.log("this is tickets", res.data)
     AppState.peopleTickets = res.data
-    // if (AppState.user.isAuthenticated) {
-    //   await this.getAccountTickets()
-    // }
-    // await this.activeTickets(id)
   }
   async addTicket(newTicket) {
     const res = await api.post('api/tickets', newTicket)
     logger.log(res.data)
-    //add the spread operator in from gregslist
     const create = { ...res.data, name: res.data.name, picture: res.data.picture }
     AppState.peopleTickets.push(create)
     AppState.activeEvent.capacity = AppState.activeEvent.capacity - 1

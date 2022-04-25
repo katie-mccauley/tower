@@ -118,12 +118,9 @@ export default {
     })
     return {
       account: computed(() => AppState.account),
-      // myEvents: computed(() => AppState.towerEvents.creatorId == AppState.account.id)
       myAttending: computed(() => AppState.attending),
       async deleteTicket(myId, ticketId) {
         try {
-          // ticket.eventId = route.params.eventId
-          // AppState.account.id = event.creatorId
           if (await Pop.confirm()) {
             await ticketsService.deleteTicket(myId, ticketId)
           }

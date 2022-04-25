@@ -3,11 +3,10 @@
     <div class="row mt-2 mb-2 ms-1 me-1 justify-content-center">
       <div id="col-12">
         <img
-          src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGZlc3RpdmFsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+          src="https://s3-alpha-sig.figma.com/img/cd1b/eb35/3224c652f40c0754047c232b09e71cc3?Expires=1652054400&Signature=eFLzuQxvt-Fc8Uk1CGWYGti9eRf6leyDs8VSwIj-k9NaY5ocyJYgT~jJnC~lN1-X8IkGyHtTsTMtSw5U3Fz7Lk-s~Xi749h~mZjw6XOJ2uS86HoX7k5VsPBwShfUe~f1-9I7CzCLDa2Vyy0b2zjzxzcXxe-JCkJjDbt~aEIE7BWtBvyxhSzMN2~w9SQ5XVhbQLbEjDF9RgGrKRoXM-eYp3yXN5~yWTH8JVG73LrLKzYCfHv6WYKAsHHFFyl6DXuhRJ4otyOhPJiUrunnDSDfy7XJtFevZcGz~ZqpbENpexqDafJbv1b2~IdNnLQ869VOyVHVPINmjhGAV97ev0EA6A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
           class="rounded shadow w-100 dimen"
           alt=""
         />
-        <!-- <h1 class="text-transparent">Towe</h1> -->
       </div>
     </div>
     <nav
@@ -159,6 +158,7 @@ export default {
   height: 300px;
   object-fit: cover;
   object-position: center;
+  filter: drop-shadow(rgba(0, 0, 0, 0.25));
 }
 
 .nav-tabs.active {

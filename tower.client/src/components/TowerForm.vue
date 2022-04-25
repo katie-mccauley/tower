@@ -81,17 +81,6 @@
         placeholder="startDate....."
       />
     </div>
-    <!-- <div class="col-md-4 mb-2">
-      <label for="" class="form-label">type: </label>
-      <input
-        v-model="editable.type"
-        required
-        type="text"
-        class="form-control"
-        aria-describedby="helpId"
-        placeholder="type....."
-      />
-    </div> -->
     <label for="" class="form-label">Choose Type: </label>
     <div class="btn-group m-2">
       <select required name="" id="" class="px-2" v-model="editable.type">
