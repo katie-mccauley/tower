@@ -7,7 +7,7 @@
       <textarea
         v-model="editable.body"
         maxlength="50"
-        minlength="3"
+        minlength="4"
         required
         class="form-control"
         id="exampleFormControlTextarea1"
