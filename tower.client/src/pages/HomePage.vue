@@ -24,7 +24,7 @@
           <a class="nav-link" aria-current="page" href="#"><h3>All</h3> </a>
         </li>
         <li class="nav-item me-5" @click="getConcert">
-          <a class="nav-link" href="#"><h3>Concert</h3> </a>
+          <a class="nav-link" href="#"><h3>Concerts</h3> </a>
         </li>
         <li class="nav-item me-5" @click="getSports">
           <a class="nav-link" href="#"><h3>Sports</h3> </a>
@@ -49,71 +49,68 @@
 </template>
 
 <script>
-import { computed, onMounted } from "@vue/runtime-core"
-import { towerEventsService } from "../services/TowerEventsService"
-import { logger } from "../utils/Logger"
-import { AppState } from "../AppState"
+import { computed, onMounted } from "@vue/runtime-core";
+import { towerEventsService } from "../services/TowerEventsService";
+import { logger } from "../utils/Logger";
+import { AppState } from "../AppState";
 export default {
-  name: 'Home',
+  name: "Home",
   setup() {
     onMounted(async () => {
       try {
-        await towerEventsService.getAllEvents()
+        await towerEventsService.getAllEvents();
       } catch (error) {
-        logger.error(error)
+        logger.error(error);
       }
-    })
+    });
     return {
-
       towerEvents: computed(() => AppState.towerEvents),
       async getAll() {
         try {
-          await towerEventsService.getAllEvents()
+          await towerEventsService.getAllEvents();
         } catch (error) {
-          logger.error(error)
+          logger.error(error);
         }
       },
       async getConcert() {
         try {
-          await towerEventsService.getConcert()
+          await towerEventsService.getConcert();
         } catch (error) {
-          logger.error(error)
+          logger.error(error);
         }
       },
       async getSports() {
         try {
-          await towerEventsService.getSports()
+          await towerEventsService.getSports();
         } catch (error) {
-          logger.error(error)
-
+          logger.error(error);
         }
       },
       async getConventions() {
         try {
-          await towerEventsService.getConventions()
+          await towerEventsService.getConventions();
         } catch (error) {
-          logger.error(error)
+          logger.error(error);
         }
       },
       async getDigital() {
         try {
-          await towerEventsService.getDigital()
+          await towerEventsService.getDigital();
         } catch (error) {
-          logger.error(error)
+          logger.error(error);
         }
       },
       async getExpos() {
         try {
-          await towerEventsService.getExpos()
+          await towerEventsService.getExpos();
         } catch (error) {
-          logger.error(error)
+          logger.error(error);
         }
       },
-      pic: computed(() => `url('${AppState.towerEvents.coverImg}')`)
-
-    }
-  }
-}
+      pic: computed(() => `url('${AppState.towerEvents.coverImg}')`),
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
